@@ -442,8 +442,8 @@
       ]
     },
     "C:\\Users\\xritc\\OneDrive\\Desktop\\Projects\\Blockchain\\nft-marketplace\\contracts\\NFTMarket.sol": {
-      "lastModificationDate": 1649731527524,
-      "contentHash": "340001b4c609eff0108d83616313e9cc",
+      "lastModificationDate": 1650039471493,
+      "contentHash": "e25b9c7b1216d5b742375b3799af1f06",
       "sourceName": "contracts/NFTMarket.sol",
       "solcConfig": {
         "version": "0.8.4",

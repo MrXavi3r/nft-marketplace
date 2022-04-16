@@ -59,9 +59,13 @@ export default function Home() {
     const contract = new ethers.Contract(nftMarketAddress, Market.abi, signer);
     const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
 
-    const transaction = contract.createMarketSale(nftAddress, nft.tokenId, {
-      value: price,
-    });
+    const transaction = await contract.createMarketSale(
+      nftAddress,
+      nft.tokenId,
+      {
+        value: price,
+      }
+    );
 
     await transaction.wait();
     loadNFTs();
@@ -79,7 +83,7 @@ export default function Home() {
               key={index}
               className="border shadow rounded-xl overflow-hidden"
             >
-              <Image src={nft.image} alt="nftt" width={350} height={350} />
+              <Image src={nft.image} alt="nft" width={350} height={350} />
               <div className="p-4">
                 <p
                   className="text-2xl font-semibold"

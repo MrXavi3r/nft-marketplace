@@ -112,6 +112,7 @@ const CreateItem = () => {
             width={350}
             height={350}
             src={fileUrl}
+            style={{ objectFit: "cover" }}
           />
         )}
         <button
