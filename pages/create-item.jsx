@@ -55,6 +55,7 @@ const CreateItem = () => {
     }
   };
 
+  // passed as a helper to the create-item function
   const createSale = async (url) => {
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();

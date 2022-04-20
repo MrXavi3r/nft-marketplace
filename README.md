@@ -1,15 +1,24 @@
-# Basic Sample Hardhat Project
+# NFT MARKETPLACE APP
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+NEXT.JS frontend 
+NODE.JS backend scripts
+SOLIDITY EVM smart contracts
+HARDHAT Ethereum development environment
 
-Try running some of the following tasks:
+An NFT marketplace for the Polygon chain. Users may create items for sale to populate the marketplace and also purchase items created by other users. 
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+Use MetaMask to connect to the Polygon Mumbai testnet to interact with this app.
+
+The 'Home' page displays all items for sale in the marketplace. Here users may purchase items buy clicking the corresponding buy button and interacting with Metamask to confirm and sign the transaction.
+
+The 'Sell Digital Asset' page produces a form that enables users to create an NFT asset for sale. There is a listing price fee of .025 MATIC that is hard coded into the NFT Marketplace contract. The owner of the NFT Marketplace contract will receive this fee each time a new item is listed for sale. Complete the form and interact with Metamask in order to confirm and sign the transaction and list a new item for sale. Once successfully submitted, Images are stored on the IPFS network via an Infura API and Ipfs-http-client package. Newly created items are ERC721 tokens called Metaverse Tokens('METT'). 
+
+The 'My Digital Assets' page displays items that the active user has purchased from the marketplace.
+
+The 'Creator Dashboard' page displays assets the active user has created in the marketplace. 
+
+
+
+
+
+

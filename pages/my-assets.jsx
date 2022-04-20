@@ -9,6 +9,7 @@ import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
 import NFTMarket from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 
 // my digital assets page
+// items you have purchased from the marketplace
 const MyAssets = () => {
   const [nfts, setNfts] = useState([]);
   const [loading, setLoading] = useState(true);

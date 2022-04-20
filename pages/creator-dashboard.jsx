@@ -8,6 +8,8 @@ import { nftAddress, nftMarketAddress } from "../config";
 import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
 import NFTMarket from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 
+// creator dashboard page
+// items you have created and listed on the marketplace
 const CreatorDashboard = () => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);

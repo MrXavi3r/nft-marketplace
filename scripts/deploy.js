@@ -1,5 +1,7 @@
+// hardhat runtime environment
 const hre = require("hardhat");
 
+// script to deploy the contracts in contracts folder
 async function main() {
   //deploy NFTMarket contract
   const NFTMarket = await hre.ethers.getContractFactory("NFTMarket");
