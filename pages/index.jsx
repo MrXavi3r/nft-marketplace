@@ -20,7 +20,10 @@ export default function Home() {
   // fetches nft data from the blockchain
   // loads the nft data into the state
   const loadNFTs = async () => {
-    const provider = new ethers.providers.JsonRpcProvider();
+    const provider = new ethers.providers.JsonRpcProvider(
+      "https://rpc-mumbai.matic.today"
+    );
+    console.log(provider);
     const tokenContract = new ethers.Contract(nftAddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(
       nftMarketAddress,
