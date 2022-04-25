@@ -32,8 +32,11 @@ const MyAssets = () => {
       NFTMarket.abi,
       signer
     );
+
+    // fetches nfts that are owned by the user
     const data = await marketContract.fetchMyNFTs();
 
+    // arranges the nft data into a custom array held in state
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenURI = await tokenContract.tokenURI(i.tokenId);
@@ -53,6 +56,7 @@ const MyAssets = () => {
     setLoading(false);
   };
 
+  // if no assets are found, display a message
   if (!loading && !nfts.length) {
     return <h1 className="py-10 px-20 text-3xl">No owned assets</h1>;
   }
@@ -75,7 +79,7 @@ const MyAssets = () => {
               />
               <div className="p-4 bg-black">
                 <p className="text-2xl font-bold text-white">
-                  Price - {nft.price}
+                  {nft.price} MATIC
                 </p>
               </div>
             </div>

@@ -27,14 +27,18 @@ const CreatorDashboard = () => {
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
 
+    // store NFT contract and NFTMarket contract in variables
     const tokenContract = new ethers.Contract(nftAddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(
       nftMarketAddress,
       NFTMarket.abi,
       signer
     );
+
+    // fetches nfts that were created by the user
     const data = await marketContract.fetchItemsCreated();
 
+    // arranges the nft data into a custom array held in state
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenURI = await tokenContract.tokenURI(i.tokenId);
@@ -77,7 +81,7 @@ const CreatorDashboard = () => {
               />
               <div className="p-4 bg-black">
                 <p className="text-2xl font-bold text-white">
-                  Price - {nft.price} ETH
+                  {nft.price} MATIC
                 </p>
               </div>
             </div>
@@ -104,7 +108,7 @@ const CreatorDashboard = () => {
                     />
                     <div className="p-4 bg-black">
                       <p className="text-2xl font-bold text-white">
-                        Price - {nft.price} ETH
+                        {nft.price} MATIC
                       </p>
                     </div>
                   </div>

@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Web3Modal from "web3modal";
 import { nftAddress, nftMarketAddress } from "../config";
 
+// ipfs client with infura node to set & pin files to ipfs
 const client = ipfsHttpClient({
   host: "ipfs.infura.io",
   port: 5001,
@@ -22,7 +23,7 @@ const CreateItem = () => {
     name: "",
     description: "",
   });
-  const router = useRouter();
+  const router = useRouter(); // next router
 
   //handles the file upload input change
   const onChange = async (e) => {
@@ -39,14 +40,14 @@ const CreateItem = () => {
     }
   };
 
-  // create a new nft
+  // creates a new nft, uses the createSale function to do so
   const createItem = async () => {
     const { name, description, price } = formInput;
-    if (!name || !description || !price) return;
+    if (!name || !description || !price || !fileUrl) return; // check if all fields are filled
     const data = JSON.stringify({ name, description, image: fileUrl });
 
     try {
-      const added = await client.add(data);
+      const added = await client.add(data); // add data to ipfs
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       // after file is added to ipfs, pass the URL to save it on Polygon
       createSale(url);
@@ -57,15 +58,17 @@ const CreateItem = () => {
 
   // passed as a helper to the create-item function
   const createSale = async (url) => {
-    const web3Modal = new Web3Modal();
+    const web3Modal = new Web3Modal(); // connect user to metamask or other wallet provider
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
 
+    // create a new nft, passing in url of the image
     let contract = new ethers.Contract(nftAddress, NFT.abi, signer);
     let transaction = await contract.createToken(url);
     let tx = await transaction.wait();
 
+    // after the transaction is mined, get the tokenId from the transaction
     let event = tx.events[0];
     let value = event.args[2];
     let tokenId = value.toNumber();
@@ -76,11 +79,12 @@ const CreateItem = () => {
     let listingPrice = await contract.getListingPrice();
     listingPrice = listingPrice.toString();
 
+    // create the item for sale, passing in the tokenId, price, and listing price
     transaction = await contract.createMarketItem(nftAddress, tokenId, price, {
       value: listingPrice,
     });
     await transaction.wait();
-    router.push("/");
+    router.push("/"); // redirect to home page after item is created
   };
 
   return (

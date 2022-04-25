@@ -7,7 +7,13 @@ HARDHAT Ethereum development environment
 
 An NFT marketplace for the Polygon chain. Users may create items for sale to populate the marketplace and also purchase items created by other users. 
 
-Use MetaMask to connect to the Polygon Mumbai testnet to interact with this app.
+Solidity smart contracts are written to handle creation of NFTs and govern the marketplace operations.
+
+Contracts are deployed via hardhat using the deploy.js script in the scripts folder.
+
+NPM RUN DEV TO START THE APPLICATION
+
+Use MetaMask to connect to the Polygon Mumbai testnet to interact with the application.
 
 The 'Home' page displays all items for sale in the marketplace. Here users may purchase items buy clicking the corresponding buy button and interacting with Metamask to confirm and sign the transaction.
 

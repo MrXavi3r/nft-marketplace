@@ -23,20 +23,24 @@ export default function Home() {
     const provider = new ethers.providers.JsonRpcProvider(
       "https://rpc-mumbai.matic.today"
     );
-    console.log(provider);
     const tokenContract = new ethers.Contract(nftAddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(
       nftMarketAddress,
       Market.abi,
       provider
     );
+
+    // get the nft data from the NFTMarket smart contract
     const data = await marketContract.fetchMarketItems();
 
+    // customize the response data for fetching all nfts and setting them into state
+    // promise.all takes an iterable of promises, and returns a single promise
+    // the response data is an array of objects
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenURI = await tokenContract.tokenURI(i.tokenId);
         const meta = await axios.get(tokenURI);
-        let price = ethers.utils.formatUnits(i.price.toString(), "ether");
+        let price = ethers.utils.formatUnits(i.price.toString(), "ether"); // show price in ether format
         let item = {
           price,
           tokenId: i.tokenId.toNumber(),
@@ -58,10 +62,11 @@ export default function Home() {
     const web3modal = new Web3Modal();
     const connection = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
-    const signer = provider.getSigner();
+    const signer = provider.getSigner(); // get the signer from the provider to call createMarketSale
     const contract = new ethers.Contract(nftMarketAddress, Market.abi, signer);
     const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
 
+    // create a market sale transaction
     const transaction = await contract.createMarketSale(
       nftAddress,
       nft.tokenId,
@@ -70,10 +75,11 @@ export default function Home() {
       }
     );
 
-    await transaction.wait();
+    await transaction.wait(); // wait for the transaction to be mined before continuing
     loadNFTs();
   };
 
+  // if there are no nfts in the marketplace to display, show a message
   if (loading === false && !nfts.length)
     return <h1 className="px-20 py-10 text-3xl">No Items in Marketplace</h1>;
 

@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\xritc\\OneDrive\\Desktop\\Projects\\Blockchain\\nft-marketplace\\contracts\\NFT.sol": {
-      "lastModificationDate": 1649633660604,
-      "contentHash": "1507d438c556b789783e1e18e496624f",
+      "lastModificationDate": 1650755181288,
+      "contentHash": "e3707454e1c3df25d12ac575ab628cd0",
       "sourceName": "contracts/NFT.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -442,8 +442,8 @@
       ]
     },
     "C:\\Users\\xritc\\OneDrive\\Desktop\\Projects\\Blockchain\\nft-marketplace\\contracts\\NFTMarket.sol": {
-      "lastModificationDate": 1650039471493,
-      "contentHash": "e25b9c7b1216d5b742375b3799af1f06",
+      "lastModificationDate": 1650768592327,
+      "contentHash": "3edf578488da22c5c074766cbe67b105",
       "sourceName": "contracts/NFTMarket.sol",
       "solcConfig": {
         "version": "0.8.4",
