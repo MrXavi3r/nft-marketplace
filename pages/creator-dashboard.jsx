@@ -63,15 +63,12 @@ const CreatorDashboard = () => {
   };
 
   return (
-    <div>
+    <div className="text-white">
       <div className="p-4">
         <h2 className="text-2xl py-2">Items Created</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {nfts.map((nft, index) => (
-            <div
-              key={index}
-              className="border shadow rounded-xl overflow-hidden"
-            >
+            <div key={index} className="shadow rounded-xl overflow-hidden">
               <Image
                 src={nft.image}
                 alt="nft"
@@ -92,12 +89,12 @@ const CreatorDashboard = () => {
         <div className="px-4">
           {Boolean(sold.length) && (
             <div>
-              <h2 className="text-2xl py-2">Items sold</h2>
+              <h2 className="text-2xl py-2">Items Sold</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
                 {sold.map((nft, index) => (
                   <div
                     key={index}
-                    className="border shadow rounded-xl overflow-hidden"
+                    className="shadow rounded-xl overflow-hidden"
                   >
                     <Image
                       src={nft.image}

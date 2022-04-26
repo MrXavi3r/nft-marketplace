@@ -97,6 +97,7 @@ contract NFTMarket is ReentrancyGuard {
         uint256 price = idToMarketItem[itemId].price; // price of the nft 
         uint256 tokenId = idToMarketItem[itemId].tokenId; // token id of the nft
 
+        require(idToMarketItem[itemId].seller != msg.sender); // seller cannot buy their own item
         require(msg.value == price, "Price must match listing price");
 
         idToMarketItem[itemId].seller.transfer(msg.value); // pays the seller of the nft the price of the item

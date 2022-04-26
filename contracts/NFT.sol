@@ -7,16 +7,16 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract NFT is ERC721URIStorage {
-    using Counters for Counters.Counter; // using Counters library 
+    using Counters for Counters.Counter; // using Counters library
     Counters.Counter private _tokenIds;
-    address contractAddress;  // this is not the address of this contract, this will be set to the address of the marketplace contract for use in SetApprovalForAll()
+    address contractAddress; // this is not the address of this contract, this will be set to the address of the marketplace contract for use in SetApprovalForAll()
 
-    constructor(address marketplaceAddress) ERC721("Metaverse Tokens", "METT") {
+    constructor(address marketplaceAddress) ERC721("Mueshi Token", "MTT") {
         contractAddress = marketplaceAddress; // set contractAddress to the NFT Marketplace address
     }
 
-     // creates a new NFT
-     // each time an item is created in the markeplace, this function is executed
+    // creates a new NFT
+    // each time an item is created in the markeplace, this function is executed
     function createToken(string memory tokenURI) public returns (uint256) {
         _tokenIds.increment(); // increments and sets the id of the new NFT
         uint256 newItemId = _tokenIds.current(); // get the id of the new NFT

@@ -80,45 +80,53 @@ export default function Home() {
   };
 
   // if there are no nfts in the marketplace to display, show a message
-  if (loading === false && !nfts.length)
-    return <h1 className="px-20 py-10 text-3xl">No Items in Marketplace</h1>;
+  // if (loading === false && !nfts.length)
+  //   return <h1 className="px-20 py-10 text-3xl">No Items in Marketplace</h1>;
 
   return (
-    <div className="flex justify-center">
-      <div className="px-4" style={{ maxWidth: "1600px" }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {nfts.map((nft, index) => (
-            <div
-              key={index}
-              className="border shadow rounded-xl overflow-hidden"
-            >
-              <Image src={nft.image} alt="nft" width={350} height={350} />
-              <div className="p-4">
-                <p
-                  className="text-2xl font-semibold"
-                  style={{ height: "64px" }}
-                >
-                  {nft.name}
-                </p>
-                <div style={{ height: "70px", overflow: "hidden" }}>
-                  <p className="text-gray-400">{nft.description}</p>
+    <>
+      <div className="text-white pl-10 mb-12">
+        <h1 className="text-8xl">BUY</h1>
+        <h2 className="text-8xl">SELL</h2>
+        <h3 className="text-8xl">INVEST</h3>
+        <button className="bg-pink-500 text-white text-2xl rounded-3xl w-72 pt-2 pb-3 mt-4">
+          Learn more
+        </button>
+      </div>
+      <div className="flex justify-center pb-12">
+        <div className="px-4" style={{ maxWidth: "1600px" }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+            {Boolean(nfts.length) &&
+              nfts.map((nft, index) => (
+                <div key={index} className="shadow rounded-xl overflow-hidden">
+                  <Image src={nft.image} alt="nft" width={350} height={350} />
+                  <div className="p-4">
+                    <p
+                      className="text-2xl font-semibold text-white"
+                      style={{ height: "64px" }}
+                    >
+                      {nft.name}
+                    </p>
+                    <div style={{ height: "70px", overflow: "hidden" }}>
+                      <p className="text-white">{nft.description}</p>
+                    </div>
+                  </div>
+                  <div className="p-4 bg-black">
+                    <p className="text-2xl mb-4 font-fold text-white">
+                      {nft.price} MATIC
+                    </p>
+                    <button
+                      className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded"
+                      onClick={() => buyNft(nft)}
+                    >
+                      Buy
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div className="p-4 bg-black">
-                <p className="text-2xl mb-4 font-fold text-white">
-                  {nft.price} MATIC
-                </p>
-                <button
-                  className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded"
-                  onClick={() => buyNft(nft)}
-                >
-                  Buy
-                </button>
-              </div>
-            </div>
-          ))}
+              ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

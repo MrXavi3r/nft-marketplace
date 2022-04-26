@@ -66,10 +66,7 @@ const MyAssets = () => {
       <div className="p-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {nfts.map((nft, index) => (
-            <div
-              key={index}
-              className="border shadow rounded-xl overflow-hidden"
-            >
+            <div key={index} className="shadow rounded-xl overflow-hidden">
               <Image
                 src={nft.image}
                 alt="nft"
